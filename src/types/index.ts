@@ -40,6 +40,20 @@ export const AccountType = {
 export type AccountType = (typeof AccountType)[keyof typeof AccountType];
 
 // Transactions
+export interface Transaction {
+  id: string;
+  accountId: string;
+  amount: number;
+  currency: Currency;
+  type: TransactionType;
+  category: TransactionCategory;
+  counterpartyName: string;
+  counterpartyAccount?: string;
+  description: string;
+  date: Date;
+  status: TransactionStatus;
+}
+
 export const TransactionType = {
   INCOMING: 'INCOMING',
   OUTGOING: 'OUTGOING',
