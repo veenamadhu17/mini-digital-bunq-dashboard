@@ -37,7 +37,7 @@ describe('accountService', () => {
       const newBalance = 2500.50;
       await accountService.updateBalance(newBalance);
       
-      const stored = localStorage.getItem('bunq_account_balance');
+      const stored = localStorage.getItem('vbank_account_balance');
       expect(stored).toBe(newBalance.toString());
     });
 

@@ -13,8 +13,8 @@ import type {
 
 export const MOCK_USER: User = {
   id: 'user-001',
-  email: 'demo@bunq.com',
-  name: 'John Doe',
+  email: 'demo@vbank.com',
+  name: 'Jane Doe',
   avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Alex',
   createdAt: new Date('2023-01-15'),
 };
@@ -24,7 +24,7 @@ export const MOCK_USER: User = {
 export const MOCK_ACCOUNT: Account = {
   id: 'acc-001',
   userId: MOCK_USER.id,
-  accountNumber: 'NL91BUNQ0417164300',
+  accountNumber: 'NL91VBANK0417164300',
   balance: 5847.32,
   currency: 'EUR' as Currency,
   accountType: 'CHECKING' as AccountType,

@@ -1,7 +1,7 @@
 import type { Account, ApiResponse } from '../types';
 import { MOCK_ACCOUNT } from './mockData';
 
-const BALANCE_STORAGE_KEY = 'bunq_account_balance';
+const BALANCE_STORAGE_KEY = 'vbank_account_balance';
 const MOCK_DELAY = 600;
 
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));

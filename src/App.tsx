@@ -1,35 +1,37 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useTheme } from './hooks';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const { theme, toggleTheme } = useTheme();
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
+    <div className="p-xl">
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
+        <h1>vBank Dashboard</h1>
+        <p className="text-secondary">
+          Welcome to your digital banking prototype
         </p>
+        
+        <button className="btn btn-primary" onClick={toggleTheme}>
+          Current Theme: {theme}
+        </button>
+        
+        <div className="flex gap-md mt-lg">
+          <button className="btn btn-primary">Primary Button</button>
+          <button className="btn btn-secondary">Secondary Button</button>
+          <button className="btn btn-ghost">Ghost Button</button>
+        </div>
+        
+        <div className="mt-lg">
+          <label htmlFor="test-input">Test Input</label>
+          <input 
+            id="test-input"
+            type="text" 
+            placeholder="Enter some text..." 
+          />
+        </div>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;

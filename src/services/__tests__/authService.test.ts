@@ -13,9 +13,9 @@ describe('authService', () => {
       
       expect(response.status).toBe(200);
       expect(response.data.user).toBeDefined();
-      expect(response.data.user.email).toBe('demo@bunq.com'); // Mock user
+      expect(response.data.user.email).toBe('demo@vbank.com'); // Mock user
       expect(response.data.token).toBeDefined();
-      expect(localStorage.getItem('bunq_auth_token')).toBeTruthy();
+      expect(localStorage.getItem('vbank_auth_token')).toBeTruthy();
     });
 
     it('should reject login with empty email', async () => {
@@ -38,7 +38,7 @@ describe('authService', () => {
 
     it('should store auth token in localStorage', async () => {
       await authService.login('test@vbank.com', 'password123');
-      const token = localStorage.getItem('bunq_auth_token');
+      const token = localStorage.getItem('vbank_auth_token');
       expect(token).toBeTruthy();
       expect(token).toContain('mock_token_');
     });
@@ -48,11 +48,11 @@ describe('authService', () => {
     it('should clear auth token from localStorage', async () => {
       // Login first
       await authService.login('test@vbank.com', 'password123');
-      expect(localStorage.getItem('bunq_auth_token')).toBeTruthy();
+      expect(localStorage.getItem('vbank_auth_token')).toBeTruthy();
 
       // Logout
       await authService.logout();
-      expect(localStorage.getItem('bunq_auth_token')).toBeNull();
+      expect(localStorage.getItem('vbank_auth_token')).toBeNull();
     });
   });
 
@@ -79,7 +79,7 @@ describe('authService', () => {
       const response = await authService.getCurrentUser();
       
       expect(response.status).toBe(200);
-      expect(response.data.email).toBe('demo@bunq.com');
+      expect(response.data.email).toBe('demo@vbank.com');
       expect(response.data.name).toBeDefined();
     });
 

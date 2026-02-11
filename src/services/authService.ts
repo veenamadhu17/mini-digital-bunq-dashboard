@@ -1,7 +1,7 @@
 import type { User, ApiResponse } from '../types';
 import { MOCK_USER } from './mockData';
 
-const AUTH_STORAGE_KEY = 'bunq_auth_token';
+const AUTH_STORAGE_KEY = 'vbank_auth_token';
 const MOCK_DELAY = 800; // Simulate network delay
 
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
