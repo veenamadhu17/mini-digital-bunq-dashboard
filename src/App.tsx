@@ -1,36 +1,33 @@
-import { useTheme } from './hooks';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { AuthProvider } from './features/auth/AuthContext';
+import { LoginPage } from './features/auth/LoginPage';
+import { DashboardLayout } from './components/layout/DashboardLayout';
+import { DashboardPage } from './features/dashboard/DashboardPage';
+import { ProtectedRoute } from './components/common/ProtectedRoute';
 
 function App() {
-  const { theme, toggleTheme } = useTheme();
-
   return (
-    <div className="p-xl">
-      <div className="card">
-        <h1>vBank Dashboard</h1>
-        <p className="text-secondary">
-          Welcome to your digital banking prototype
-        </p>
-        
-        <button className="btn btn-primary" onClick={toggleTheme}>
-          Current Theme: {theme}
-        </button>
-        
-        <div className="flex gap-md mt-lg">
-          <button className="btn btn-primary">Primary Button</button>
-          <button className="btn btn-secondary">Secondary Button</button>
-          <button className="btn btn-ghost">Ghost Button</button>
-        </div>
-        
-        <div className="mt-lg">
-          <label htmlFor="test-input">Test Input</label>
-          <input 
-            id="test-input"
-            type="text" 
-            placeholder="Enter some text..." 
-          />
-        </div>
-      </div>
-    </div>
+    <BrowserRouter>
+      <AuthProvider>
+        <Routes>
+          <Route path="/login" element={<LoginPage />} />
+          
+          <Route
+            path="/"
+            element={
+              <ProtectedRoute>
+                <DashboardLayout />
+              </ProtectedRoute>
+            }
+          >
+            <Route index element={<Navigate to="/dashboard" replace />} />
+            <Route path="dashboard" element={<DashboardPage />} />
+          </Route>
+
+          <Route path="*" element={<Navigate to="/dashboard" replace />} />
+        </Routes>
+      </AuthProvider>
+    </BrowserRouter>
   );
 }
 
