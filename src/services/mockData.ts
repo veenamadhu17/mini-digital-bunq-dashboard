@@ -35,7 +35,7 @@ export const MOCK_ACCOUNT: Account = {
 
 const createMockTransaction = (
   id: string,
-  daysAgo: number,
+  date: string,
   amount: number,
   type: TransactionType,
   category: TransactionCategory,
@@ -50,16 +50,16 @@ const createMockTransaction = (
   category,
   counterpartyName,
   description,
-  date: new Date(Date.now() - daysAgo * 24 * 60 * 60 * 1000),
+  date: new Date(date),
   status: 'COMPLETED' as TransactionStatus,
   counterpartyAccount: type === 'INCOMING' ? 'NL89INGB0001234567' : 'NL12RABO0987654321',
 });
 
 export const MOCK_TRANSACTIONS: Transaction[] = [
-  // This month
+  // February 2025
   createMockTransaction(
     'txn-001',
-    1,
+    '2025-02-21',
     2500,
     'INCOMING' as TransactionType,
     'SALARY' as TransactionCategory,
@@ -68,7 +68,7 @@ export const MOCK_TRANSACTIONS: Transaction[] = [
   ),
   createMockTransaction(
     'txn-002',
-    2,
+    '2025-02-20',
     89.99,
     'OUTGOING' as TransactionType,
     'GROCERIES' as TransactionCategory,
@@ -77,7 +77,7 @@ export const MOCK_TRANSACTIONS: Transaction[] = [
   ),
   createMockTransaction(
     'txn-003',
-    3,
+    '2025-02-19',
     12.50,
     'OUTGOING' as TransactionType,
     'TRANSPORT' as TransactionCategory,
@@ -86,7 +86,7 @@ export const MOCK_TRANSACTIONS: Transaction[] = [
   ),
   createMockTransaction(
     'txn-004',
-    5,
+    '2025-02-17',
     1200,
     'OUTGOING' as TransactionType,
     'RENT' as TransactionCategory,
@@ -95,7 +95,7 @@ export const MOCK_TRANSACTIONS: Transaction[] = [
   ),
   createMockTransaction(
     'txn-005',
-    6,
+    '2025-02-16',
     45.00,
     'OUTGOING' as TransactionType,
     'UTILITIES' as TransactionCategory,
@@ -104,7 +104,7 @@ export const MOCK_TRANSACTIONS: Transaction[] = [
   ),
   createMockTransaction(
     'txn-006',
-    7,
+    '2025-02-15',
     156.75,
     'OUTGOING' as TransactionType,
     'SHOPPING' as TransactionCategory,
@@ -113,7 +113,7 @@ export const MOCK_TRANSACTIONS: Transaction[] = [
   ),
   createMockTransaction(
     'txn-007',
-    8,
+    '2025-02-14',
     23.50,
     'OUTGOING' as TransactionType,
     'ENTERTAINMENT' as TransactionCategory,
@@ -122,18 +122,18 @@ export const MOCK_TRANSACTIONS: Transaction[] = [
   ),
   createMockTransaction(
     'txn-008',
-    10,
+    '2025-02-12',
     67.40,
     'OUTGOING' as TransactionType,
     'GROCERIES' as TransactionCategory,
     'Jumbo Supermarkt',
     'Grocery shopping'
   ),
-  
-  // Last month
+
+  // January 2025
   createMockTransaction(
     'txn-009',
-    32,
+    '2025-01-21',
     2500,
     'INCOMING' as TransactionType,
     'SALARY' as TransactionCategory,
@@ -142,7 +142,7 @@ export const MOCK_TRANSACTIONS: Transaction[] = [
   ),
   createMockTransaction(
     'txn-010',
-    35,
+    '2025-01-18',
     1200,
     'OUTGOING' as TransactionType,
     'RENT' as TransactionCategory,
@@ -151,7 +151,7 @@ export const MOCK_TRANSACTIONS: Transaction[] = [
   ),
   createMockTransaction(
     'txn-011',
-    36,
+    '2025-01-17',
     125.00,
     'OUTGOING' as TransactionType,
     'HEALTHCARE' as TransactionCategory,
@@ -160,7 +160,7 @@ export const MOCK_TRANSACTIONS: Transaction[] = [
   ),
   createMockTransaction(
     'txn-012',
-    38,
+    '2025-01-15',
     89.00,
     'OUTGOING' as TransactionType,
     'UTILITIES' as TransactionCategory,
@@ -169,7 +169,7 @@ export const MOCK_TRANSACTIONS: Transaction[] = [
   ),
   createMockTransaction(
     'txn-013',
-    40,
+    '2025-01-13',
     250.00,
     'OUTGOING' as TransactionType,
     'SHOPPING' as TransactionCategory,
@@ -178,7 +178,7 @@ export const MOCK_TRANSACTIONS: Transaction[] = [
   ),
   createMockTransaction(
     'txn-014',
-    42,
+    '2025-01-11',
     78.90,
     'OUTGOING' as TransactionType,
     'GROCERIES' as TransactionCategory,
@@ -187,18 +187,18 @@ export const MOCK_TRANSACTIONS: Transaction[] = [
   ),
   createMockTransaction(
     'txn-015',
-    45,
+    '2025-01-08',
     35.00,
     'OUTGOING' as TransactionType,
     'ENTERTAINMENT' as TransactionCategory,
     'Spotify',
     'Music subscription'
   ),
-  
-  // Two months ago
+
+  // December 2024
   createMockTransaction(
     'txn-016',
-    62,
+    '2024-12-22',
     2500,
     'INCOMING' as TransactionType,
     'SALARY' as TransactionCategory,
@@ -207,7 +207,7 @@ export const MOCK_TRANSACTIONS: Transaction[] = [
   ),
   createMockTransaction(
     'txn-017',
-    65,
+    '2024-12-19',
     1200,
     'OUTGOING' as TransactionType,
     'RENT' as TransactionCategory,
@@ -216,7 +216,7 @@ export const MOCK_TRANSACTIONS: Transaction[] = [
   ),
   createMockTransaction(
     'txn-018',
-    68,
+    '2024-12-16',
     450.00,
     'OUTGOING' as TransactionType,
     'SHOPPING' as TransactionCategory,
@@ -225,7 +225,7 @@ export const MOCK_TRANSACTIONS: Transaction[] = [
   ),
   createMockTransaction(
     'txn-019',
-    70,
+    '2024-12-14',
     92.30,
     'OUTGOING' as TransactionType,
     'GROCERIES' as TransactionCategory,
@@ -234,7 +234,7 @@ export const MOCK_TRANSACTIONS: Transaction[] = [
   ),
   createMockTransaction(
     'txn-020',
-    72,
+    '2024-12-12',
     15.00,
     'OUTGOING' as TransactionType,
     'TRANSPORT' as TransactionCategory,
@@ -268,6 +268,9 @@ export const generateMockTransactions = (count: number): Transaction[] => {
 
   for (let i = transactions.length; i < count; i++) {
     const daysAgo = Math.floor(Math.random() * 365);
+    const date = new Date(2025, 1, 22);
+    date.setDate(date.getDate() - daysAgo);
+    const dateStr = date.toISOString().split('T')[0];
     const amount = Math.random() * 200 + 5;
     const category = categories[Math.floor(Math.random() * categories.length)] as TransactionCategory;
     const merchant = merchants[Math.floor(Math.random() * merchants.length)];
@@ -275,7 +278,7 @@ export const generateMockTransactions = (count: number): Transaction[] => {
     transactions.push(
       createMockTransaction(
         `txn-${String(i + 1).padStart(3, '0')}`,
-        daysAgo,
+        dateStr,
         amount,
         'OUTGOING' as TransactionType,
         category,
