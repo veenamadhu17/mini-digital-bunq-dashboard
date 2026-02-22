@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useAuthContext } from '../../features/auth/AuthContext';
 import { useTheme } from '../../hooks';
 import './DashboardHeader.css';
@@ -7,18 +7,19 @@ import './DashboardHeader.css';
 export const DashboardHeader: React.FC = () => {
   const { user, logout } = useAuthContext();
   const { theme, toggleTheme } = useTheme();
-  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleLogout = async () => {
     await logout();
-    navigate('/login');
   };
+
+  const isActive = (path: string) => location.pathname === path;
 
   return (
     <header className="dashboard-header">
       <div className="dashboard-header-container">
         {/* Logo */}
-        <div className="header-logo">
+        <Link to="/dashboard" className="header-logo">
           <svg
             width="32"
             height="32"
@@ -43,7 +44,23 @@ export const DashboardHeader: React.FC = () => {
             />
           </svg>
           <span className="header-title">vBank</span>
-        </div>
+        </Link>
+
+        {/* Navigation */}
+        <nav className="header-nav">
+          <Link
+            to="/dashboard"
+            className={`nav-link ${isActive('/dashboard') ? 'active' : ''}`}
+          >
+            Dashboard
+          </Link>
+          <Link
+            to="/transactions"
+            className={`nav-link ${isActive('/transactions') ? 'active' : ''}`}
+          >
+            Transactions
+          </Link>
+        </nav>
 
         {/* Actions */}
         <div className="header-actions">

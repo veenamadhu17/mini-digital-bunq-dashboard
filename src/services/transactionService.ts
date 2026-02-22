@@ -137,7 +137,9 @@ export const transactionService = {
         const matchesSearch =
           transaction.counterpartyName.toLowerCase().includes(searchLower) ||
           transaction.description.toLowerCase().includes(searchLower);
-        if (!matchesSearch) return false;
+        if (!matchesSearch) {
+          return false;
+        }
       }
 
       // Type filter

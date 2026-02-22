@@ -28,7 +28,7 @@ A high-performance, accessible mini banking dashboard built with React + TypeScr
 - Vitest + React Testing Library
 - Playwright
 - Recharts
-- react-window
+- react-virtuoso
 
 ## Getting Started
 [To be completed]

@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { transactionService } from '../services';
 import type { Transaction, TransactionFilters, TransactionSort } from '../types';
 
@@ -17,8 +17,8 @@ export const useTransactions = (): UseTransactionsReturn => {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [filters, setFilters] = useState<TransactionFilters>({});
-  const [sort, setSort] = useState<TransactionSort>({
+  const [filters, setFiltersState] = useState<TransactionFilters>({});
+  const [sort, setSortState] = useState<TransactionSort>({
     field: 'date',
     direction: 'desc',
   });
@@ -40,6 +40,14 @@ export const useTransactions = (): UseTransactionsReturn => {
   useEffect(() => {
     fetchTransactions();
   }, [fetchTransactions]);
+
+  const setFilters = useCallback((newFilters: TransactionFilters) => {
+    setFiltersState(newFilters);
+  }, []);
+
+  const setSort = useCallback((newSort: TransactionSort) => {
+    setSortState(newSort);
+  }, []);
 
   return {
     transactions,

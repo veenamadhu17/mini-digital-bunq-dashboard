@@ -4,6 +4,7 @@ import { LoginPage } from './features/auth/LoginPage';
 import { DashboardLayout } from './components/layout/DashboardLayout';
 import { DashboardPage } from './features/dashboard/DashboardPage';
 import { ProtectedRoute } from './components/common/ProtectedRoute';
+import { TransactionsPage } from './features/transactions/TransactionPage';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           >
             <Route index element={<Navigate to="/dashboard" replace />} />
             <Route path="dashboard" element={<DashboardPage />} />
+            <Route path="transactions" element={<TransactionsPage />} />
           </Route>
 
           <Route path="*" element={<Navigate to="/dashboard" replace />} />
